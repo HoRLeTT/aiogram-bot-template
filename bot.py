@@ -9,6 +9,9 @@ from loguru import logger
 
 from data import config
 
+from utils.notify_admins import on_startup_notify
+from utils.set_bot_commands import set_deafult_commands
+
 
 # noinspection PyUnusedLocal
 async def on_startup(app: web.Application):
@@ -21,6 +24,9 @@ async def on_startup(app: web.Application):
     handlers.user.setup(dp)
     logger.info('Configure Webhook URL to: {url}', url=config.WEBHOOK_URL)
     await dp.bot.set_webhook(config.WEBHOOK_URL)
+    
+    await on_startup_notify(dp)
+    await set_deafult_commands(dp)
 
 
 async def on_shutdown(app: web.Application):
