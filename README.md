@@ -1,3 +1,3 @@
 # aiogram-bot-template
-Template for creating scalable bots with aiogram
+Template for creating scalable bots for Telegram with aiogram
 
